@@ -3,14 +3,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Traductor.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
              x:Class="Traductor.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <RelativePanel Margin="10">
+      <Image Source="../Assets/avalonia-logo.ico"
+             Name="Img"
+             RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
+             RelativePanel.Below="Title" Width="200"/>
+      <TextBlock 
+          Name="Title"
+          RelativePanel.AlignHorizontalCenterWithPanel="True"
+          FontSize="35" FontWeight="Bold"
+          Text="Imagen a Texto"/>
+      <RelativePanel Margin="5" RelativePanel.Below="Img" RelativePanel.AlignHorizontalCenterWithPanel="True">
+          <Button 
+              Name="SearchFileBt"
+              RelativePanel.AlignHorizontalCenterWithPanel="True"
+              Content="Agregar Imagen"
+              />
+          <TextBlock
+              Name="TitleGetText"
+              RelativePanel.AlignHorizontalCenterWithPanel="True"
+              RelativePanel.Below="SearchFileBt"
+              Margin="0 20 0 5"
+              Text="Texto Obtenido:"/>
+          <TextBox
+              RelativePanel.AlignHorizontalCenterWithPanel="True"
+              RelativePanel.Below="TitleGetText"
+              Margin="0 2"
+              Height="150"
+              Width="400"
+              AcceptsReturn="True"
+              TextWrapping="Wrap"
+              />
+      </RelativePanel>
+  </RelativePanel>
 </UserControl>
