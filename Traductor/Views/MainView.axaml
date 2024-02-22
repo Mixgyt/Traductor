@@ -3,15 +3,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Traductor.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="625"
              x:Class="Traductor.Views.MainView"
              x:DataType="vm:MainViewModel">
 
   <RelativePanel Margin="10">
-      <Image Source="../Assets/avalonia-logo.ico"
-             Name="Img"
-             RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
-             RelativePanel.Below="Title" Width="200"/>
+      <Image 
+          Margin="0 5 0 5"
+          Source="../Assets/avalonia-logo.ico"
+          Name="Img"
+          RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
+          RelativePanel.Below="Title" Height="300"/>
       <TextBlock 
           Name="Title"
           RelativePanel.AlignHorizontalCenterWithPanel="True"

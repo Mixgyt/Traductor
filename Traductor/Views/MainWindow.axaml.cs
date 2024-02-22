@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
@@ -23,19 +22,16 @@ public partial class MainWindow : Window
     private async void SelectImage(object? sender, RoutedEventArgs e)
     {
         var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel == null) return;
         var file = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
         {
             Title = "Imagen a extraer",
             AllowMultiple = false,
-            
+            FileTypeFilter = new[]{ FilePickerFileTypes.ImageAll }
         });
 
-        if (file.Count >= 1)
-        {
-            byte[] fs = File.ReadAllBytes("../../../../Traductor/Assets/debug/test.png");
-            Stream st = new MemoryStream(fs);
-            var image = new Avalonia.Media.Imaging.Bitmap(st);
-            View.Img.Source = image;
-        }
+        if (file.Count < 1) return;
+        var stream = await file[0].OpenReadAsync();
+        View.Img.Source = new Bitmap(stream);
     }
 }
